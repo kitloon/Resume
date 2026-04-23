@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tang Kit Loon | AI & Robotics Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-gradient: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
+            --accent-color: #00f2fe;
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --text-main: #e0e0e0;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #080808;
+            color: var(--text-main);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        #particles-js { position: fixed; width: 100%; height: 100%; z-index: -1; }
+        #cursor-dot {
+            width: 8px; height: 8px; background: var(--accent-color);
+            position: fixed; border-radius: 50%; pointer-events: none;
+            z-index: 9999; transition: transform 0.1s;
+        }
+
+        .container { max-width: 1100px; margin: 0 auto; padding: 50px 20px; }
+
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 35px;
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .gradient-text {
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 800;
+        }
+
+        header { text-align: center; margin-bottom: 60px; }
+        header h1 { font-size: 3.5rem; letter-spacing: -1px; margin-bottom: 10px; }
+
+        .contact-info {
+            display: flex; justify-content: center; gap: 20px;
+            flex-wrap: wrap; font-size: 0.9rem; color: #aaa;
+        }
+
+        section { margin-bottom: 60px; }
+        section h2 { font-size: 2rem; margin-bottom: 30px; display: flex; align-items: center; gap: 12px; }
+
+        /* Education */
+        .edu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+
+        /* Experience */
+        .experience-item {
+            border-left: 2px solid var(--glass-border);
+            padding-left: 25px;
+            position: relative;
+            margin-bottom: 40px;
+        }
+        .experience-item::before {
+            content: ''; position: absolute; left: -7px; top: 0;
+            width: 12px; height: 12px; background: var(--accent-color);
+            border-radius: 50%; box-shadow: 0 0 10px var(--accent-color);
+        }
+        .experience-list { list-style: none; margin-top: 10px; }
+        .experience-list li {
+            position: relative; padding-left: 20px; margin-bottom: 8px; font-size: 0.95rem; color: #ccc;
+        }
+        .experience-list li::before {
+            content: "▹"; position: absolute; left: 0; color: var(--accent-color);
+        }
+
+        /* Projects */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+        }
+        .project-card { display: flex; flex-direction: column; height: 100%; }
+        .video-placeholder {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            background: linear-gradient(45deg, #111, #222);
+            border-radius: 12px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(255,255,255,0.05);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        .video-placeholder:hover { transform: scale(1.02); background: linear-gradient(45deg, #1a1a1a, #2a2a2a); }
+        .video-placeholder i { font-size: 3rem; color: rgba(255,255,255,0.15); transition: color 0.3s; }
+        .video-placeholder:hover i { color: #ff0000; }
+
+        .tech-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 15px; }
+        .tag {
+            font-size: 0.7rem; padding: 3px 10px; border-radius: 50px;
+            background: rgba(79, 172, 254, 0.1); border: 1px solid rgba(79, 172, 254, 0.2);
+            color: #4facfe; text-transform: uppercase; font-weight: 600;
+        }
+        .project-desc { font-size: 0.9rem; color: #bbb; flex-grow: 1; margin-bottom: 20px; }
+        
+        .project-links { display: flex; gap: 15px; }
+        .link-btn {
+            display: inline-flex; align-items: center; gap: 8px;
+            color: #fff; text-decoration: none; font-size: 0.85rem; font-weight: 600;
+            transition: color 0.3s;
+        }
+        .link-btn:hover { color: var(--accent-color); }
+
+        @media (max-width: 768px) {
+            .edu-grid { grid-template-columns: 1fr; }
+            header h1 { font-size: 2.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="particles-js"></div>
+    <div id="cursor-dot"></div>
+
+    <div class="container">
+        <header>
+            <h1 class="gradient-text">Tang Kit Loon</h1>
+            <div class="contact-info">
+                <span><i class="fas fa-phone"></i> +6018-8731226</span>
+                <span><i class="fas fa-envelope"></i> kitloon2612@gmail.com</span>
+                <span><i class="fas fa-location-dot"></i> Johor Bahru</span>
+            </div>
+        </header>
+
+        <section>
+            <h2><i class="fas fa-graduation-cap gradient-text"></i> Education</h2>
+            <div class="edu-grid">
+                <div class="glass-card">
+                    <span class="tag" style="color:var(--accent-color)">2024 - 2026</span>
+                    <h3 style="color:#fff; margin-top:10px;">Bachelor of AI and Robotics</h3>
+                    <p style="color: #888;">Raffles University Malaysia</p>
+                    <p class="gradient-text" style="font-weight: bold; margin-top: 5px;">CGPA: 3.75</p>
+                </div>
+                <div class="glass-card">
+                    <span class="tag" style="color:var(--accent-color)">2021 - 2023</span>
+                    <h3 style="color:#fff; margin-top:10px;">Diploma in Information Technology</h3>
+                    <p style="color: #888;">Kolej MDIS Malaysia</p>
+                    <p class="gradient-text" style="font-weight: bold; margin-top: 5px;">CGPA: 3.73</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2><i class="fas fa-briefcase gradient-text"></i> Work Experience</h2>
+            <div class="glass-card">
+                <div class="experience-item">
+                    <span class="tag" style="color:var(--accent-color)">SEP 2023 - DEC 2023</span>
+                    <h3 style="color:#fff; margin-top:5px;">Software Engineering Intern</h3>
+                    <p style="color: #4facfe; font-weight: 600;">IMAGINE AI SDN BHD, JOHOR BAHRU</p>
+                    <ul class="experience-list">
+                        <li>Developed and enhanced web application features using Flask and OpenCV.</li>
+                        <li>Implemented computer vision modules and contributed to front-end UI/UX improvements.</li>
+                        <li>Collaborated with senior developers in agile environment.</li>
+                    </ul>
+                </div>
+
+                <div class="experience-item" style="margin-bottom: 0;">
+                    <span class="tag" style="color:var(--accent-color)">JAN 2026 - Mar 2026</span>
+                    <h3 style="color:#fff; margin-top:5px;">Junior Onsite Technician and Programmer Intern</h3>
+                    <p style="color: #4facfe; font-weight: 600;">Digital Magic Studio Sdn Bhd</p>
+                    <ul class="experience-list">
+                        <li>Utilized CMD to check device status, schedule operations, and manage remote system tasks.</li>
+                        <li>Assisted in on-site SG to installation, maintenance, and troubleshooting of projection systems.</li>
+                        <li>Monitored hardware and power systems, ensuring proper functionality of all devices during exhibitions.</li>
+                        <li>Assisted in hardware organization and document management, including SLDs, cut sheets, and product specification sheets for exhibitions.</li>
+                        <li>Communicated with clients and internal teams to coordinate on-site technical requirements and equipment setup.</li>
+                    </ul>
+
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2><i class="fas fa-rocket gradient-text"></i> Projects</h2>
+            <div class="project-grid">
+                
+                <div class="glass-card project-card">
+                    <a href="https://youtu.be/nl8yP2CP-E0" target="_blank" class="video-placeholder">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                    <h3>Virtual Model Runway</h3>
+                    <div class="tech-tags">
+                        <span class="tag">Stable Diffusion</span><span class="tag">Mimicmotion</span><span class="tag">Python</span>
+                    </div>
+                    <p class="project-desc">Designed a 3-stage virtual try-on pipeline: outfit replacement, motion transfer using driven videos, and automatic video composition.</p>
+                    <div class="project-links">
+                        <a href="https://youtu.be/nl8yP2CP-E0" target="_blank" class="link-btn"><i class="fab fa-youtube"></i> Watch Video</a>
+                        <a href="#" class="link-btn"><i class="fab fa-github"></i> GitHub</a>
+                    </div>
+                </div>
+
+                <div class="glass-card project-card">
+                    <a href="https://youtu.be/H1OCku_7h-k" class="video-placeholder">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                    <h3>Drone Human Tracking</h3>
+                    <div class="tech-tags">
+                        <span class="tag">Python</span><span class="tag">OpenCV</span><span class="tag">Computer Vision</span>
+                    </div>
+                    <p class="project-desc">Built a real-time human tracking system for drones using OpenCV-based face detection, enabling automatic target locking and continuous tracking.</p>
+                    <div class="project-links">
+                        <a href="https://youtu.be/H1OCku_7h-k" target="_blank" class="link-btn"><i class="fab fa-youtube"></i> Watch Video</a>
+                        <a href="https://github.com/kitloon/my-tello-project" class="link-btn"><i class="fab fa-github"></i> GitHub</a>
+                    </div>
+                </div>
+
+                <div class="glass-card project-card">
+                    <a href="#" target="_blank" class="video-placeholder">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                    <h3>Safety Monitoring System</h3>
+                    <div class="tech-tags">
+                        <span class="tag">YOLOv5</span><span class="tag">OpenCV</span><span class="tag">PyTorch</span>
+                    </div>
+                    <p class="project-desc">Developed a CV-based monitoring system using YOLOv5 to detect safety helmet usage and count elevator occupants for construction site safety.</p>
+                    <div class="project-links">
+                        <a href="#" target="_blank" class="link-btn"><i class="fab fa-youtube"></i> Watch Video</a>
+                        <a href="#" class="link-btn"><i class="fab fa-github"></i> GitHub</a>
+                    </div>
+                </div>
+
+                <div class="glass-card project-card">
+                    <a href="#" target="_blank" class="video-placeholder">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                    <h3>AI Chatbot (RAG)</h3>
+                    <div class="tech-tags">
+                        <span class="tag">GPT-4</span><span class="tag">RAG</span><span class="tag">LangChain</span>
+                    </div>
+                    <p class="project-desc">Developed an AI chatbot using RAG to retrieve information from a custom knowledge base and generate context-aware responses using GPT-4.</p>
+                    <div class="project-links">
+                        <a href="#" target="_blank" class="link-btn"><i class="fab fa-youtube"></i> Watch Video</a>
+                        <a href="https://github.com/kitloon/RAG" class="link-btn"><i class="fab fa-github"></i> GitHub</a>
+                    </div>
+                </div>
+
+                <div class="glass-card project-card">
+                    <a href="#" target="_blank" class="video-placeholder">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                    <h3>Leaf Disease Classification</h3>
+                    <div class="tech-tags">
+                        <span class="tag">CNN</span><span class="tag">PyTorch</span><span class="tag">OpenCV</span>
+                    </div>
+                    <p class="project-desc">Developed a CNN-based image classification model to detect healthy vs diseased banana leaves, including dataset preprocessing and augmentation.</p>
+                    <div class="project-links">
+                        <a href="#" target="_blank" class="link-btn"><i class="fab fa-youtube"></i> Watch Video</a>
+                        <a href="#" class="link-btn"><i class="fab fa-github"></i> GitHub</a>
+                    </div>
+                </div>
+
+                <div class="glass-card project-card">
+                    <a href="#" target="_blank" class="video-placeholder">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                    <h3>Hotel Booking Platform</h3>
+                    <div class="tech-tags">
+                        <span class="tag">Flask</span><span class="tag">Flutter</span><span class="tag">MongoDB</span>
+                    </div>
+                    <p class="project-desc">A cross-platform booking system with user authentication, room reservation flow, and account management using Flask and Flutter.</p>
+                    <div class="project-links">
+                        <a href="#" target="_blank" class="link-btn"><i class="fab fa-youtube"></i> Watch Video</a>
+                        <a href="#" class="link-btn"><i class="fab fa-github"></i> GitHub</a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        particlesJS('particles-js', {
+            "particles": {
+                "number": { "value": 50, "density": { "enable": true, "value_area": 800 } },
+                "color": { "value": "#4facfe" },
+                "opacity": { "value": 0.2 },
+                "size": { "value": 2 },
+                "line_linked": { "enable": true, "distance": 150, "color": "#4facfe", "opacity": 0.1, "width": 1 },
+                "move": { "enable": true, "speed": 1 }
+            },
+            "interactivity": { "events": { "onhover": { "enable": true, "mode": "grab" } } }
+        });
+        const dot = document.getElementById('cursor-dot');
+        document.addEventListener('mousemove', (e) => {
+            dot.style.left = e.clientX + 'px';
+            dot.style.top = e.clientY + 'px';
+        });
+    </script>
+</body>
+</html>
