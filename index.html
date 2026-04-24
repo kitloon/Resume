@@ -62,10 +62,8 @@
         section { margin-bottom: 60px; }
         section h2 { font-size: 2rem; margin-bottom: 30px; display: flex; align-items: center; gap: 12px; }
 
-        /* Education */
         .edu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
 
-        /* Experience */
         .experience-item {
             border-left: 2px solid var(--glass-border);
             padding-left: 25px;
@@ -85,7 +83,6 @@
             content: "▹"; position: absolute; left: 0; color: var(--accent-color);
         }
 
-        /* Projects */
         .project-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -169,6 +166,20 @@
             <h2><i class="fas fa-briefcase gradient-text"></i> Work Experience</h2>
             <div class="glass-card">
                 <div class="experience-item">
+                    <span class="tag" style="color:var(--accent-color)">JAN 2026 - Mar 2026</span>
+                    <h3 style="color:#fff; margin-top:5px;">Junior Onsite Technician and Programmer Intern</h3>
+                    <p style="color: #4facfe; font-weight: 600;">Digital Magic Studio Sdn Bhd</p>
+                    <ul class="experience-list">
+                        <li>Performed remote monitoring and system health checks for deployed systems at Science Centre Singapore (SCS), ensuring stable operation in a public-facing environment.</li>
+                        <li>Conducted periodic performance checks and identified system abnormalities for timely reporting and resolution.</li>
+                        <li>Provided remote troubleshooting and basic maintenance support to minimize system downtime.</li>
+                        <li>Carried out scheduled on-site visits in Singapore for basic technical support, system inspection, and issue handling.</li>
+                        <li>Communicated system status updates and coordinated issue followups with clients and internal stakeholders.</li>
+                        <li>Supported large-scale events including SCS RoboFest 2026 and Singapore Chinese Chamber of Commerce and Industry (SCCCI), ensuring system reliability during operations.</li>
+                    </ul>
+                </div>
+
+                <div class="experience-item" style="margin-bottom: 0;">
                     <span class="tag" style="color:var(--accent-color)">SEP 2023 - DEC 2023</span>
                     <h3 style="color:#fff; margin-top:5px;">Software Engineering Intern</h3>
                     <p style="color: #4facfe; font-weight: 600;">IMAGINE AI SDN BHD, JOHOR BAHRU</p>
@@ -178,21 +189,6 @@
                         <li>Improved front-end UI/UX for internal web platforms, supporting usability and workflow efficiency.</li>
                         <li>Contributed to full-stack feature development in an Agile environment, collaborating closely with senior developers on sprint tasks and code reviews.</li>
                     </ul>
-                </div>
-
-                <div class="experience-item" style="margin-bottom: 0;">
-                    <span class="tag" style="color:var(--accent-color)">JAN 2026 - Mar 2026</span>
-                    <h3 style="color:#fff; margin-top:5px;">Junior Onsite Technician and Programmer Intern</h3>
-                    <p style="color: #4facfe; font-weight: 600;">Digital Magic Studio Sdn Bhd</p>
-                    <ul class="experience-list">
-                        <li>Performed remote monitoring and system health checks for deployed systems at Science Centre Singapore (SCS), ensuring stable operation in a public-facing environment.</li>
-                        <li>Conducted periodic performance checks and identified system abnormalities for timely reporting and resolution.</li>
-                        <li>Provided remote troubleshooting and basic maintenance support to minimize system downtime.</li>
-                        <li>Carried out scheduled on-site visits in Singapore for basic technical support, system inspection, and issue handling.</li>
-                        <li>Communicated system status updates and coordinated issue follow-ups with clients and internal stakeholders.</li>
-                        <li>Supported large-scale events including SCS RoboFest 2026 and Singapore Chinese Chamber of Commerce and Industry (SCCCI), ensuring system reliability during operations.</li>
-                    </ul>
-
                 </div>
             </div>
         </section>
@@ -205,11 +201,17 @@
                     <a href="https://youtu.be/nl8yP2CP-E0" target="_blank" class="video-placeholder">
                         <i class="fab fa-youtube"></i>
                     </a>
-                    <h3>Virtual Model Runway</h3>
+                    <h3>Virtual Model Runway – AI Video Try-On System</h3>
                     <div class="tech-tags">
-                        <span class="tag">Stable Diffusion</span><span class="tag">Motion Transfer</span><span class="tag">Python</span>
+                        <span class="tag">Stable Diffusion</span><span class="tag">Motion Transfer</span><span class="tag">Python</span><span class="tag">FFmpeg</span>
                     </div>
-                    <p class="project-desc">Designed a 3-stage virtual try-on pipeline: outfit replacement, motion transfer using driven videos, and automatic video composition.</p>
+                    <ul class="project-desc experience-list">
+                        <li>Designed a 3-stage virtual try-on pipeline combining outfit replacement, motion transfer, and automated video composition.</li>
+                        <li>Implemented Stable Diffusion-based inpainting to realistically replace garments on user images.</li>
+                        <li>Integrated motion transfer using driving videos to animate static try-on results.</li>
+                        <li>Developed an automated video editor-style pipeline for clip stitching and music integration.</li>
+                        <li>Generated runway-style videos in ~5 minutes for 10-second outputs (RTX 5090 inference).</li>
+                    </ul>
                     <div class="project-links">
                         <a href="https://youtu.be/nl8yP2CP-E0" target="_blank" class="link-btn"><i class="fab fa-youtube"></i> Watch Video</a>
                         <a href="#" class="link-btn"><i class="fab fa-github"></i> GitHub</a>
@@ -220,11 +222,16 @@
                     <a href="https://youtu.be/H1OCku_7h-k" class="video-placeholder">
                         <i class="fab fa-youtube"></i>
                     </a>
-                    <h3>Drone Human Tracking</h3>
+                    <h3>Real-Time Drone Human Tracking System</h3>
                     <div class="tech-tags">
-                        <span class="tag">Python</span><span class="tag">OpenCV</span><span class="tag">Computer Vision</span>
+                        <span class="tag">Python</span><span class="tag">OpenCV</span><span class="tag">PID Control</span><span class="tag">DJI Tello SDK</span>
                     </div>
-                    <p class="project-desc">Built a real-time human tracking system for drones using OpenCV-based face detection, enabling automatic target locking and continuous tracking.</p>
+                    <ul class="project-desc experience-list">
+                        <li>Built a real-time face tracking system using OpenCV and Haar Cascade detection.</li>
+                        <li>Implemented bounding box tracking with center-offset calculation for localization.</li>
+                        <li>Applied P-controller to adjust drone yaw, pitch, and altitude for continuous tracking.</li>
+                        <li>Achieved ~15–30 FPS with low-latency UDP streaming for responsive control.</li>
+                    </ul>
                     <div class="project-links">
                         <a href="https://youtu.be/H1OCku_7h-k" target="_blank" class="link-btn"><i class="fab fa-youtube"></i> Watch Video</a>
                         <a href="https://github.com/kitloon/my-tello-project" class="link-btn"><i class="fab fa-github"></i> GitHub</a>
@@ -232,29 +239,19 @@
                 </div>
 
                 <div class="glass-card project-card">
-                    <a href="https://www.youtube.com/watch?v=EmcWUKFhPG0" target="_blank" class="video-placeholder">
-                        <i class="fab fa-youtube"></i>
-                    </a>
-                    <h3>Safety Monitoring System</h3>
-                    <div class="tech-tags">
-                        <span class="tag">YOLOv5</span><span class="tag">OpenCV</span><span class="tag">PyTorch</span>
-                    </div>
-                    <p class="project-desc">Developed a CV-based monitoring system using YOLOv5 to detect safety helmet usage and count elevator occupants for construction site safety.</p>
-                    <div class="project-links">
-                        <a href="https://www.youtube.com/watch?v=EmcWUKFhPG0" target="_blank" class="link-btn"><i class="fab fa-youtube"></i> Watch Video</a>
-                        <a href="#" class="link-btn"><i class="fab fa-github"></i> GitHub</a>
-                    </div>
-                </div>
-
-                <div class="glass-card project-card">
                     <a href="#" target="_blank" class="video-placeholder">
                         <i class="fab fa-youtube"></i>
                     </a>
-                    <h3>AI Chatbot (RAG)</h3>
+                    <h3>AI Chatbot with RAG</h3>
                     <div class="tech-tags">
-                        <span class="tag">GPT-4</span><span class="tag">RAG</span><span class="tag">LangChain</span>
+                        <span class="tag">Python</span><span class="tag">LangChain</span><span class="tag">OpenAI API</span><span class="tag">ChromaDB</span>
                     </div>
-                    <p class="project-desc">Developed an AI chatbot using RAG to retrieve information from a custom knowledge base and generate context-aware responses using GPT-4.</p>
+                    <ul class="project-desc experience-list">
+                        <li>Built a RAG-based chatbot supporting PDF and web-based knowledge sources.</li>
+                        <li>Implemented semantic retrieval using OpenAI embeddings and ChromaDB.</li>
+                        <li>Integrated GPT-based LLM for context-aware answer generation.</li>
+                        <li>Enhanced accuracy with real-time web search fallback and source referencing.</li>
+                    </ul>
                     <div class="project-links">
                         <a href="#" target="_blank" class="link-btn"><i class="fab fa-youtube"></i> Watch Video</a>
                         <a href="https://github.com/kitloon/RAG" class="link-btn"><i class="fab fa-github"></i> GitHub</a>
@@ -265,13 +262,38 @@
                     <a href="#" target="_blank" class="video-placeholder">
                         <i class="fab fa-youtube"></i>
                     </a>
-                    <h3>Leaf Disease Classification</h3>
+                    <h3>Hotel Booking System – Full-Stack App</h3>
                     <div class="tech-tags">
-                        <span class="tag">CNN</span><span class="tag">PyTorch</span><span class="tag">OpenCV</span>
+                        <span class="tag">Flask</span><span class="tag">Flutter</span><span class="tag">MongoDB</span><span class="tag">REST API</span>
                     </div>
-                    <p class="project-desc">Developed a CNN-based image classification model to detect healthy vs diseased banana leaves, including dataset preprocessing and augmentation.</p>
+                    <ul class="project-desc experience-list">
+                        <li>Developed a full-stack hotel booking system supporting room and facility reservations.</li>
+                        <li>Implemented user authentication, booking workflow, and account management.</li>
+                        <li>Designed and built RESTful APIs using Flask with MongoDB database integration.</li>
+                        <li>Developed responsive web interface (HTML/Flask) and mobile application (Flutter).</li>
+                    </ul>
                     <div class="project-links">
                         <a href="#" target="_blank" class="link-btn"><i class="fab fa-youtube"></i> Watch Video</a>
+                        <a href="#" class="link-btn"><i class="fab fa-github"></i> GitHub</a>
+                    </div>
+                </div>
+
+                <div class="glass-card project-card">
+                    <a href="https://www.youtube.com/watch?v=EmcWUKFhPG0" target="_blank" class="video-placeholder">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                    <h3>Construction Site Safety Monitoring System</h3>
+                    <div class="tech-tags">
+                        <span class="tag">YOLOv5</span><span class="tag">PyTorch</span><span class="tag">OpenCV</span><span class="tag">Python</span>
+                    </div>
+                    <ul class="project-desc experience-list">
+                        <li>Built a real-time PPE detection system using a custom-trained YOLOv5 model to detect helmets, vests, and violations.</li>
+                        <li>Achieved 83.2% mAP@50 accuracy overall, with 93.9% accuracy specifically for helmet detection.</li>
+                        <li>Implemented real-time people counting and automated violation detection logic for safety compliance.</li>
+                        <li>Optimized system for 10–30 FPS inference and integrated crowd control logic for elevator safety monitoring.</li>
+                    </ul>
+                    <div class="project-links">
+                        <a href="https://www.youtube.com/watch?v=EmcWUKFhPG0" target="_blank" class="link-btn"><i class="fab fa-youtube"></i> Watch Video</a>
                         <a href="#" class="link-btn"><i class="fab fa-github"></i> GitHub</a>
                     </div>
                 </div>
@@ -280,11 +302,16 @@
                     <a href="#" target="_blank" class="video-placeholder">
                         <i class="fab fa-youtube"></i>
                     </a>
-                    <h3>Hotel Booking Platform</h3>
+                    <h3>Tomato Leaf Disease Detection (CNN)</h3>
                     <div class="tech-tags">
-                        <span class="tag">Flask</span><span class="tag">Flutter</span><span class="tag">MongoDB</span>
+                        <span class="tag">CNN</span><span class="tag">PyTorch</span><span class="tag">OpenCV</span><span class="tag">Image Processing</span>
                     </div>
-                    <p class="project-desc">A cross-platform booking system with user authentication, room reservation flow, and account management using Flask and Flutter.</p>
+                    <ul class="project-desc experience-list">
+                        <li>Developed a CNN-based classification model to detect and identify tomato leaf diseases from digital images.</li>
+                        <li>Trained on an augmented dataset with normalization and class balancing to ensure robustness under varying lighting.</li>
+                        <li>Achieved ~92% classification accuracy across multiple disease categories for early-stage detection.</li>
+                        <li>Designed as a farmer-assist tool to reduce reliance on manual inspection and minimize crop loss.</li>
+                    </ul>
                     <div class="project-links">
                         <a href="#" target="_blank" class="link-btn"><i class="fab fa-youtube"></i> Watch Video</a>
                         <a href="#" class="link-btn"><i class="fab fa-github"></i> GitHub</a>
